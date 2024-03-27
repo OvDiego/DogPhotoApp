@@ -13,8 +13,10 @@ import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.input.nestedscroll.nestedScroll
 import androidx.compose.ui.res.stringResource
+import androidx.lifecycle.viewmodel.compose.viewModel
 import com.example.dogphotoapp.R
 import com.example.dogphotoapp.ui.theme.screens.HomeScreen
+import com.example.dogphotoapp.viewmodel.DogViewModel
 
 @OptIn(ExperimentalMaterial3Api::class)
 @Composable
@@ -26,7 +28,8 @@ fun DogApp(){
     ) {
         Surface(
             modifier = Modifier.fillMaxSize()) {
-            HomeScreen(dogUiState = stringResource(id = R.string.placeholder_result), contentPadding = it)
+            val dogViewModel:DogViewModel = viewModel()
+            HomeScreen(dogUiState = dogViewModel.dogUiState, contentPadding = it)
 
         }
 
