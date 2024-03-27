@@ -7,9 +7,18 @@ import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import com.example.dogphotoapp.network.DogApi
 import kotlinx.coroutines.launch
+import java.io.IOException
+
+
+sealed interface DogUiState{
+    data class Success(val photos:String) : DogUiState
+    object Error: DogUiState
+    object Loading: DogUiState
+}
+
 
 class DogViewModel: ViewModel() {
-    var dogUiState by mutableStateOf("")
+    var dogUiState:DogUiState by mutableStateOf(DogUiState.Loading)
         private set
 
     init {
@@ -18,8 +27,13 @@ class DogViewModel: ViewModel() {
 
     fun getDogPhotos(){
         viewModelScope.launch {
+          dogUiState =  try {
             val listResult = DogApi.retrofitService.getPhotos()
-            dogUiState=listResult
+            DogUiState.Success(listResult)
+            }
+            catch (e:IOException){
+                DogUiState.Error
+            }
         }
     }
 }

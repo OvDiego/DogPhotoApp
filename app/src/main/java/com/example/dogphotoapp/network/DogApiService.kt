@@ -13,7 +13,7 @@ private val retrofit = Retrofit.Builder()
     .build()
 
 interface DogApiService{
-    @GET("v1/images/search")
+    @GET("v1/images/search?limit=10")
     suspend fun getPhotos():String
 }
 
