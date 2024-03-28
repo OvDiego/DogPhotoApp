@@ -105,7 +105,7 @@ fun ErrorScreen(modifier: Modifier= Modifier) {
         verticalArrangement = Arrangement.Center,
         horizontalAlignment =  Alignment.CenterHorizontally
     ){
-        Image(painter = painterResource(id = R.drawable.error_load)
+        Image(painter = painterResource(id = R.drawable.perro_durmiendo)
             , contentDescription = "Problemas de conexión")
         Text(text = stringResource(id = R.string.problem_with_connection))
     }
