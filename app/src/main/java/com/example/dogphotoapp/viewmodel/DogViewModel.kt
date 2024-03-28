@@ -9,6 +9,8 @@ import com.example.dogphotoapp.model.DogPhoto
 import com.example.dogphotoapp.network.DogApi
 import kotlinx.coroutines.launch
 import java.io.IOException
+import androidx.lifecycle.LiveData
+import androidx.lifecycle.MutableLiveData
 
 
 sealed interface DogUiState{
@@ -16,6 +18,7 @@ sealed interface DogUiState{
     object Error: DogUiState
     object Loading: DogUiState
 }
+
 
 
 class DogViewModel: ViewModel() {

@@ -9,9 +9,12 @@ import androidx.compose.foundation.layout.aspectRatio
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.padding
+import androidx.compose.foundation.lazy.LazyColumn
+import androidx.compose.foundation.lazy.LazyRow
 import androidx.compose.foundation.lazy.grid.GridCells
 import androidx.compose.foundation.lazy.grid.LazyVerticalGrid
 import androidx.compose.foundation.lazy.grid.items
+import androidx.compose.foundation.lazy.items
 import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.material3.Card
 import androidx.compose.material3.CardDefaults
@@ -33,7 +36,35 @@ import com.example.dogphotoapp.R
 import com.example.dogphotoapp.model.DogPhoto
 import com.example.dogphotoapp.viewmodel.DogUiState
 
+
+
+
+
+ //DESPLIEGUE HORIZONTAL
 @Composable
+fun HomeScreen(
+    dogUiState: DogUiState,
+    modifier: Modifier = Modifier,
+    contentPadding: PaddingValues = PaddingValues(0.dp)
+) {
+    when (dogUiState) {
+        is DogUiState.Loading -> LoadingScreen(modifier = Modifier.fillMaxSize())
+        is DogUiState.Success -> {
+            LazyRow(
+                modifier = modifier.fillMaxSize(),
+                contentPadding = contentPadding
+            ) {
+                items(dogUiState.photos) { photo ->
+                    DogPhotoCard(photo = photo, modifier = Modifier.padding(4.dp))
+                }
+            }
+        }
+        is DogUiState.Error -> ErrorScreen(modifier = Modifier.fillMaxSize())
+    }
+}
+
+//DESPLIEJE VERTICAL
+/*@Composable
 
 fun HomeScreen(
     dogUiState:DogUiState,
@@ -46,7 +77,7 @@ fun HomeScreen(
         is DogUiState.Error -> ErrorScreen(modifier = Modifier.fillMaxSize())
     }
 
-}
+}*/
 
 @Composable
 fun LoadingScreen(modifier: Modifier = Modifier) {

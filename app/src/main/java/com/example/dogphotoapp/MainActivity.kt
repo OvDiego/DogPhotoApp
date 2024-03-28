@@ -13,6 +13,10 @@ import androidx.compose.ui.tooling.preview.Preview
 import com.example.dogphotoapp.ui.theme.DogApp
 import com.example.dogphotoapp.ui.theme.theme.DogPhotoAppTheme
 
+
+
+
+
 class MainActivity : ComponentActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
