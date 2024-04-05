@@ -13,11 +13,19 @@ import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 
 
+
+sealed interface DogUiState {
+    data class Success(val photoIds: List<String>): DogUiState
+    object Error: DogUiState
+    object Loading: DogUiState
+}
+
+/*FOTOS
 sealed interface DogUiState{
     data class Success(val photos: List<DogPhoto>) : DogUiState
     object Error: DogUiState
     object Loading: DogUiState
-}
+}*/
 
 
 
@@ -29,6 +37,21 @@ class DogViewModel: ViewModel() {
         getDogPhotos()
     }
 
+    fun getDogPhotos() {
+        viewModelScope.launch {
+            dogUiState = try {
+                val listResult = DogApi.retrofitService.getPhotos()
+                val photoIds = listResult.map { it.id }
+                DogUiState.Success(photoIds)
+            } catch (e: IOException) {
+                DogUiState.Error
+            }
+        }
+    }
+}
+
+
+/*FOTOS
     fun getDogPhotos(){
         viewModelScope.launch {
           dogUiState =  try {
@@ -40,4 +63,4 @@ class DogViewModel: ViewModel() {
             }
         }
     }
-}
+}*/
