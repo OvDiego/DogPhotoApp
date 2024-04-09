@@ -71,6 +71,10 @@ dependencies {
     implementation("org.jetbrains.kotlinx:kotlinx-serialization-json:1.6.0")
     //Procesar imagenes
     implementation("io.coil-kt:coil-compose:2.6.0")
+    //Testing
+    testImplementation("junit:junit:4.13.2")
+    testImplementation("org.jetbrains.kotlinx:kotlinx-coroutines-test:1.7.1")
+
 
     implementation("androidx.lifecycle:lifecycle-viewmodel-compose:2.7.0")
     implementation("com.google.firebase:firebase-storage-ktx:20.3.0")

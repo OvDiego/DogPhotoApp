@@ -36,59 +36,6 @@ import com.example.dogphotoapp.R
 import com.example.dogphotoapp.model.DogPhoto
 import com.example.dogphotoapp.viewmodel.DogUiState
 
-
-
-@Composable
-fun HomeScreen(
-    dogUiState: DogUiState,
-    modifier: Modifier = Modifier,
-    contentPadding: PaddingValues = PaddingValues(0.dp)
-) {
-    when (dogUiState) {
-        is DogUiState.Loading -> LoadingScreen(modifier = Modifier.fillMaxSize())
-        is DogUiState.Success -> ResultScreen(photoIds = dogUiState.photoIds, modifier = modifier.fillMaxWidth())
-        is DogUiState.Error -> ErrorScreen(modifier = Modifier.fillMaxSize())
-    }
-}
-
-@Composable
-fun ErrorScreen(modifier: Modifier) {
-    Box(
-        modifier = modifier,
-        contentAlignment = Alignment.Center
-    ) {
-        Image(
-            painter = painterResource(id = R.drawable.perro_durmiendo),
-            contentDescription = "Error"
-        )
-    }
-}
-
-@Composable
-fun LoadingScreen(modifier: Modifier) {
-    Box(
-        modifier = modifier,
-        contentAlignment = Alignment.Center
-    ) {
-        Image(
-            painter = painterResource(id = R.drawable.loader),
-            contentDescription = "Cargando"
-        )
-    }
-}
-
-@Composable
-fun ResultScreen(photoIds: List<String>, modifier: Modifier = Modifier) {
-    Box(
-        modifier = modifier,
-        contentAlignment = Alignment.Center
-    ) {
-        Text(text = "Los IDs de perros recibidos son: $photoIds")
-    }
-}
-
-
-
  //DESPLIEGUE HORIZONTAL
 /*@Composable
 fun HomeScreen(
@@ -115,7 +62,7 @@ fun HomeScreen(
 //DESPLIEJE VERTICAL
 
 //FOTOS
-/*@Composable
+@Composable
 
 fun HomeScreen(
     dogUiState:DogUiState,
@@ -163,7 +110,7 @@ fun ErrorScreen(modifier: Modifier= Modifier) {
             , contentDescription = "Problemas de conexión")
         Text(text = stringResource(id = R.string.problem_with_connection))
     }
-}*/
+}
 
 
 @Composable
@@ -228,3 +175,55 @@ fun HomeScreenPreview(){
     }
 
 }
+
+
+/* IDs
+@Composable
+fun HomeScreen(
+    dogUiState: DogUiState,
+    modifier: Modifier = Modifier,
+    contentPadding: PaddingValues = PaddingValues(0.dp)
+) {
+    when (dogUiState) {
+        is DogUiState.Loading -> LoadingScreen(modifier = Modifier.fillMaxSize())
+        is DogUiState.Success -> ResultScreen(photoIds = dogUiState.photoIds, modifier = modifier.fillMaxWidth())
+        is DogUiState.Error -> ErrorScreen(modifier = Modifier.fillMaxSize())
+    }
+}
+
+@Composable
+fun ErrorScreen(modifier: Modifier) {
+    Box(
+        modifier = modifier,
+        contentAlignment = Alignment.Center
+    ) {
+        Image(
+            painter = painterResource(id = R.drawable.perro_durmiendo),
+            contentDescription = "Error"
+        )
+    }
+}
+
+@Composable
+fun LoadingScreen(modifier: Modifier) {
+    Box(
+        modifier = modifier,
+        contentAlignment = Alignment.Center
+    ) {
+        Image(
+            painter = painterResource(id = R.drawable.loader),
+            contentDescription = "Cargando"
+        )
+    }
+}
+
+@Composable
+fun ResultScreen(photoIds: List<String>, modifier: Modifier = Modifier) {
+    Box(
+        modifier = modifier,
+        contentAlignment = Alignment.Center
+    ) {
+        Text(text = "Los IDs de perros recibidos son: $photoIds")
+    }
+}
+*/
