@@ -17,7 +17,7 @@ class DogViewModelTest {
             val dogViewModel = DogViewModel(
                 dogPhotoRepository = FakeNetworkDogPhotoRepository()
             )
-            assertEquals(DogUiState.Success(FakeDataSource.photoList),dogViewModel.dogUiState)
+            assertEquals(DogUiState.Success(FakeDataSource2.photoList),dogViewModel.dogUiState)
         }
     }
 }
