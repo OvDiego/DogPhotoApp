@@ -10,12 +10,10 @@ class NetworkDogPhotoRepository {
     fun networkDogPhotoRepository_getDogPhotos_verifyPhotoList(){
         runTest {
             val repository = NetworkDogPhotoRepository(
-                dogApiService = FakeDogApiSerivce()
+                dogApiService = FakeDogApiService()
             )
             assertEquals(FakeDataSource.photoList,repository.getDogPhotos())
 
         }
-
-
     }
 }
